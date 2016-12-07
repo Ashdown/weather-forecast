@@ -5,10 +5,15 @@
 
             return (
                 <section>
-                    <a href="#">Generate forecast</a>
+                    <a href="#" onClick={this._onGenerateForecast}>Generate forecast</a>
                 </section>
                 );
 
+        },
+
+        _onGenerateForecast: function() {
+
+            App.Actions.Generator.create();
         }
     });
 
