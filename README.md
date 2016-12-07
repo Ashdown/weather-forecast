@@ -33,7 +33,7 @@ Compiling React Files for production
 
 Install jsx compiler
 
-`npm install -g jsx`
+`sudo npm install -g react-tools`
 
 Run the rake command
 
