@@ -1,23 +1,22 @@
 (function (React, App) {
 
-    function getTodoState() {
-
+    function getForecastState() {
         return {
-            allTodos: App.Stores.TodoStore.getAll()
+            weatherForecasts: App.Stores.ForecastStore.getAll()
         };
     }
 
     App.Components.Container = React.createClass({displayName: "Container",
         getInitialState: function () {
-            return getTodoState();
+            return getForecastState();
         },
 
         componentDidMount: function () {
-            App.Stores.TodoStore.addChangeListener(this._onChange);
+            App.Stores.ForecastStore.addChangeListener(this._onChange);
         },
 
         componentWillUnmount: function () {
-            App.Stores.TodoStore.removeChangeListener(this._onChange);
+            App.Stores.ForecastStore.removeChangeListener(this._onChange);
         },
 
         /**
@@ -26,18 +25,16 @@
         render: function () {
             return (
                 React.createElement("div", null, 
-                    React.createElement(App.Components.Header, null), 
-                    React.createElement(App.Components.MainSection, {
-                    allTodos: this.state.allTodos, 
-                    areAllComplete: this.state.areAllComplete}
-                    ), 
-                    React.createElement(App.Components.Footer, {allTodos: this.state.allTodos})
+                    React.createElement(App.Components.Generator, null), 
+                    React.createElement(App.Components.ForecastList, {
+                        weatherForecasts: this.state.weatherForecasts}), 
+                    React.createElement(App.Components.Footer, null)
                 )
                 );
         },
 
         _onChange: function () {
-            this.setState(getTodoState());
+            this.setState(getForecastState());
         }
 
     });

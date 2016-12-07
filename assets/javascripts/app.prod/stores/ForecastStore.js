@@ -1,42 +1,38 @@
 (function (React, App, assign) {
 
-
-//    var EventEmitter = require('events').EventEmitter;
-
     var CHANGE_EVENT_STRING = 'change';
     var CHANGE_EVENT = new Event(CHANGE_EVENT_STRING);
-    var _todos = {};
+    var _forecasts = {};
 
     /**
-     * Create a Todo item.
-     * @param {string} text The content of the TODO
+     * Create a Forecast item.
+     * @param {basicDescription} text
+     * @param {detailedDescription} text
      */
 
-    function create(text) {
-        //use current timestamp in place of the id
-        var id = Date.now();
-        _todos[id] = {
-            id: id,
-            complete: false,
-            text: text
+    function create(id, basicDescription, detailedDescription) {
+        //use current timestamp as id
+        _forecasts[id] = {
+            basicDescription: basicDescription,
+            detailedDescription: detailedDescription
         };
     }
 
     /**
-     * delete a TODO item
+     * delete a Forecast item
      * @param {string} id
      */
 
     function destroy(id) {
-        delete _todos[id];
+        delete _forecasts[id];
     }
 
-    App.Stores.TodoStore = function(){};
+    App.Stores.ForecastStore = function(){};
 
-    App.Stores.TodoStore = assign({}, App.Stores.TodoStore.prototype, {
+    App.Stores.ForecastStore = assign({}, App.Stores.ForecastStore.prototype, {
 
         getAll: function () {
-            return _todos;
+            return _forecasts;
         },
 
         emitChange: function() {
@@ -52,20 +48,26 @@
         },
 
         dispatcherIndex: App.Dispatcher.register(function (payload) {
+
             var action = payload.action;
             var text;
 
             switch (action.actionType) {
-                case App.Constants.TodoConstants.TODO_CREATE:
-                    text = action.text.trim();
-                    if (text !== '') {
-                        create(text);
-                        App.Stores.TodoStore.emitChange()
+                case App.Constants.GeneratorConstants.FORECAST_CREATE:
+
+                    for (var key in action.data) {
+                        create(
+                            action.data[key].id,
+                            action.data[key].basicDescription,
+                            action.data[key].detailedDescription);
                     }
+
+                    App.Stores.ForecastStore.emitChange();
                     break;
-                case App.Constants.TodoConstants.TODO_DESTROY:
+
+                case App.Constants.GeneratorConstants.FORECAST_DESTROY:
                     destroy(action.id);
-                    App.Stores.TodoStore.emitChange();
+                    App.Stores.ForecastStore.emitChange();
                     break;
                 //add more cases for other action types...ie TODO_UPDATE
             }
