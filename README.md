@@ -1,20 +1,9 @@
-Sinatra React Test App
+Weather Forecast
 ================
 
-Simple Ruby application with the following features
-
-    * Sinatra
-    * Hosted on heroku
-    * Slim templates
-    * Sprockets and asset pipeline
-    * SCSS
-    * Jasmine testing
-    * rspec testing
-    * Feature testing
-    * React
-    * Implementation of Flux
+React app displaying 5 day weather forecast.
     
-[Sinatra Test App on Heroku](https://sheltered-taiga-2980.herokuapp.com/) 
+[Weather Forecast on Heroku](https://floating-savannah-23458.herokuapp.com/) 
     
 Helpful Commands
 ----------------
@@ -43,11 +32,6 @@ View locally
 
 [local site](http://localhost:5000/)
 
-For more see
-
-[Getting started with Ruby on Heroku](https://devcenter.heroku.com/articles/getting-started-with-ruby)
-[React TutorialRe](https://facebook.github.io/react/docs/tutorial.html)
-
 Compiling React Files for production
 ------------------------------------
 
@@ -58,14 +42,6 @@ Install jsx compiler
 Run the rake command
 
 `rake compilejsx`
-
-Database Integration
---------------------
-
-For more see
-
-[Making a simple database driven website with sinatra and heroku](https://samuelstern.wordpress.com/2012/11/28/making-a-simple-database-driven-website-with-sinatra-and-heroku/)  
-
 
 
     
