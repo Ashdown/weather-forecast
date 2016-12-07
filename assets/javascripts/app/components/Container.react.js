@@ -26,12 +26,9 @@
         render: function () {
             return (
                 <div>
-                    <App.Components.Header />
-                    <App.Components.MainSection
-                    allTodos={this.state.allTodos}
-                    areAllComplete={this.state.areAllComplete}
-                    />
-                    <App.Components.Footer allTodos={this.state.allTodos} />
+                    <App.Components.Generator />
+                    <App.Components.Forecast />
+                    <App.Components.Footer />
                 </div>
                 );
         },
