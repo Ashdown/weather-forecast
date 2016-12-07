@@ -1,23 +1,23 @@
 (function (React, App) {
 
-    function getTodoState() {
+    function getForecastState() {
 
         return {
-            allTodos: App.Stores.TodoStore.getAll()
+            weatherForecasts: App.Stores.ForecastStore.getAll()
         };
     }
 
     App.Components.Container = React.createClass({
         getInitialState: function () {
-            return getTodoState();
+            return getForecastState();
         },
 
         componentDidMount: function () {
-            App.Stores.TodoStore.addChangeListener(this._onChange);
+            App.Stores.ForecastStore.addChangeListener(this._onChange);
         },
 
         componentWillUnmount: function () {
-            App.Stores.TodoStore.removeChangeListener(this._onChange);
+            App.Stores.ForecastStore.removeChangeListener(this._onChange);
         },
 
         /**
@@ -27,14 +27,15 @@
             return (
                 <div>
                     <App.Components.Generator />
-                    <App.Components.Forecast />
+                    <App.Components.Forecast
+                        weatherForecasts={this.state.weatherForecasts} />
                     <App.Components.Footer />
                 </div>
                 );
         },
 
         _onChange: function () {
-            this.setState(getTodoState());
+            this.setState(getForecastState());
         }
 
     });
