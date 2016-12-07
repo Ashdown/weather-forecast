@@ -11,9 +11,8 @@
 
             return (
                 <li key={forecast.id}>
-                    <label>
-                    {forecast.text}
-                    </label>
+                    <p>{forecast.basicDescription}</p>
+                    <p>{forecast.detailedDescription}</p>
                 </li>
                 );
         }

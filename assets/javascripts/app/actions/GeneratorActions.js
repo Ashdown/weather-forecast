@@ -7,9 +7,9 @@
 
             //get current location
 
-            console.log('test');
-
             navigator.geolocation.getCurrentPosition(function(position) {
+
+                //ajax to open weather map
 
                 fetch('http://api.openweathermap.org/data/2.5/forecast?lat='
                     + position.coords.latitude
@@ -20,20 +20,22 @@
                     method: 'get'
                 }).then(function(response) {
 
+                    //format into json
                     return response.json();
 
-                    //get only the data we are interested in
                 }).then(function(responseAsJson) {
-                    console.log(responseAsJson.list.length);
+
+                    //extract the data we are interested in
+
                     var data = new Array(),
                         i;
                     for(i = 0;i < responseAsJson.list.length; i++) {
                         data.push({
+                            id : responseAsJson.list[i].dt,
                             basicDescription : responseAsJson.list[i].weather[0].main,
                             detailedDescription : responseAsJson.list[i].weather[0].description
                         });
                     }
-                    console.log(data);
                     App.Dispatcher.handleViewAction({
                         actionType: App.Constants.GeneratorConstants.FORECAST_CREATE,
                         data: data
@@ -45,16 +47,6 @@
 
             });
 
-
-
-            //make json request to this location
-
-            //update app accordinglyF
-
-//            App.Dispatcher.handleViewAction({
-//                actionType: App.Constants.TodoConstants.TODO_CREATE,
-//                text: text
-//            });
         }
     };
 

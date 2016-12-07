@@ -1,24 +1,20 @@
 (function (React, App, assign) {
 
-
-//    var EventEmitter = require('events').EventEmitter;
-
     var CHANGE_EVENT_STRING = 'change';
     var CHANGE_EVENT = new Event(CHANGE_EVENT_STRING);
     var _forecasts = {};
 
     /**
      * Create a Forecast item.
-     * @param {string} text The content of the Forecast
+     * @param {basicDescription} text
+     * @param {detailedDescription} text
      */
 
-    function create(text) {
-        //use current timestamp in place of the id
-        var id = Date.now();
+    function create(id, basicDescription, detailedDescription) {
+        //use current timestamp as id
         _forecasts[id] = {
-            id: id,
-            complete: false,
-            text: text
+            basicDescription: basicDescription,
+            detailedDescription: detailedDescription
         };
     }
 
@@ -40,15 +36,11 @@
         },
 
         emitChange: function() {
-            console.log('emit change');
             App.target.dispatchEvent(CHANGE_EVENT);
         },
 
         addChangeListener: function(callback) {
-            App.target.addEventListener(CHANGE_EVENT_STRING, function() {
-                console.log('change event called');
-                callback();
-            });
+            App.target.addEventListener(CHANGE_EVENT_STRING, callback);
         },
 
         removeChangeListener: function(callback) {
@@ -63,14 +55,16 @@
             switch (action.actionType) {
                 case App.Constants.GeneratorConstants.FORECAST_CREATE:
 
-                    //todo: create one forecast for each forecast data
-
-                    text = 'test';
-                    if (text !== '') {
-                        create(text);
-                        App.Stores.ForecastStore.emitChange()
+                    for (var key in action.data) {
+                        create(
+                            action.data[key].id,
+                            action.data[key].basicDescription,
+                            action.data[key].detailedDescription);
                     }
+
+                    App.Stores.ForecastStore.emitChange();
                     break;
+
                 case App.Constants.GeneratorConstants.FORECAST_DESTROY:
                     destroy(action.id);
                     App.Stores.ForecastStore.emitChange();

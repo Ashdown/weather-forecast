@@ -1,5 +1,5 @@
 (function (React, App) {
-    App.Components.Forecast = React.createClass({
+    App.Components.ForecastList = React.createClass({
 
         render: function () {
 
