@@ -1,6 +1,7 @@
 (function (React, App) {
 
     function getForecastState() {
+        console.log(App.Stores.ForecastStore.getAll());
 
         return {
             weatherForecasts: App.Stores.ForecastStore.getAll()
@@ -35,6 +36,7 @@
         },
 
         _onChange: function () {
+            console.log('on change in container');
             this.setState(getForecastState());
         }
 

@@ -2,7 +2,7 @@
     App.Components.ForecastItem = React.createClass({
 
         propTypes: {
-            todo: React.PropTypes.object.isRequired
+            forecast: React.PropTypes.object.isRequired
         },
 
         render: function () {

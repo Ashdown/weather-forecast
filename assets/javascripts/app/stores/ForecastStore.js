@@ -40,11 +40,15 @@
         },
 
         emitChange: function() {
+            console.log('emit change');
             App.target.dispatchEvent(CHANGE_EVENT);
         },
 
         addChangeListener: function(callback) {
-            App.target.addEventListener(CHANGE_EVENT_STRING, callback);
+            App.target.addEventListener(CHANGE_EVENT_STRING, function() {
+                console.log('change event called');
+                callback();
+            });
         },
 
         removeChangeListener: function(callback) {
@@ -52,15 +56,19 @@
         },
 
         dispatcherIndex: App.Dispatcher.register(function (payload) {
+
             var action = payload.action;
             var text;
 
             switch (action.actionType) {
                 case App.Constants.GeneratorConstants.FORECAST_CREATE:
-                    text = action.text.trim();
+
+                    //todo: create one forecast for each forecast data
+
+                    text = 'test';
                     if (text !== '') {
                         create(text);
-                        App.Stores.GeneratorConstants.emitChange()
+                        App.Stores.ForecastStore.emitChange()
                     }
                     break;
                 case App.Constants.GeneratorConstants.FORECAST_DESTROY:

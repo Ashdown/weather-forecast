@@ -6,8 +6,8 @@
             var weatherForecasts = this.props.weatherForecasts,
                 forecastItems = [];
 
-            for (var key in forecastItems) {
-                forecastItems.push(<App.Components.ForecastItem key={key} todo={forecastItems[key]} />);
+            for (var key in weatherForecasts) {
+                forecastItems.push(<App.Components.ForecastItem key={key} forecast={weatherForecasts[key]} />);
             }
 
             return (

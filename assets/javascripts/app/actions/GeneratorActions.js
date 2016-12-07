@@ -20,8 +20,6 @@
                     method: 'get'
                 }).then(function(response) {
 
-                    console.log('response');
-
                     return response.json();
 
                     //get only the data we are interested in
@@ -37,7 +35,7 @@
                     }
                     console.log(data);
                     App.Dispatcher.handleViewAction({
-                        actionType: App.Constants.GeneratorConstants.GENERATE,
+                        actionType: App.Constants.GeneratorConstants.FORECAST_CREATE,
                         data: data
                     })
 
