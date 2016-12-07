@@ -20,10 +20,6 @@ Open App
 
 `heroku open`
 
-Set environment variable
-
-`heroku config:set FOO=BAR`
-
 Run locally
 
 `foreman start web`
