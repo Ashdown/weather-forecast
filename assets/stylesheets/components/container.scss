@@ -1,4 +1,17 @@
-.container {
-  font-family: helvetica, arial, sans-serif;
-  font-size: 16px;
+@import '../_mixins';
+
+@include respond-to(tablet) {
+  .container {
+    font-size: 20px;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
+
+@include respond-to(desktop) {
+  .container {
+    width: 800px;
+  }
+}
+

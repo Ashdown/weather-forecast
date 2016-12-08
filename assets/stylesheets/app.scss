@@ -1,4 +1,5 @@
 @import '_variables';
+@import '_mixins';
 
 .app {
   font-family: helvetica, arial, sans-serif;
@@ -23,5 +24,22 @@
   }
 
 
+}
+
+@include respond-to(tablet) {
+  .app {
+    font-size: 24px;
+
+    .page-title {
+      font-size: 48px;
+    }
+
+    .page-title,
+    .introduction {
+      text-align: center;
+      margin-top: 24px;
+    }
+
+  }
 }
 
