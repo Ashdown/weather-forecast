@@ -8,7 +8,7 @@
         render: function () {
 
             var forecast = this.props.forecast,
-                date = new Date(forecast.id),
+                date = new Date(forecast.id * 1000),
                 days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
             return (
