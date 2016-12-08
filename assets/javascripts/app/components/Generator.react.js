@@ -4,9 +4,7 @@
         render: function () {
 
             return (
-                <section>
-                    <a href="#" onClick={this._onGenerateForecast}>Generate forecast</a>
-                </section>
+                <a className="generator" href="#" onClick={this._onGenerateForecast}>Generate forecast</a>
                 );
 
         },

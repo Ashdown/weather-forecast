@@ -7,11 +7,13 @@
 
         render: function () {
 
-            var forecast = this.props.forecast;
+            var forecast = this.props.forecast,
+                date = new Date(forecast.id),
+                days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
             return (
-                <li key={forecast.id}>
-                    <p>{forecast.basicDescription}</p>
+                <li key={forecast.id} className={'forecast-item ' + forecast.basicDescription.toLowerCase()}>
+                    <h2>{days[date.getDay()] + ' ' + date.getHours() + ':00'}</h2>
                     <p>{forecast.detailedDescription}</p>
                 </li>
                 );

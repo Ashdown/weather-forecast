@@ -13,6 +13,7 @@
     function create(id, basicDescription, detailedDescription) {
         //use current timestamp as id
         _forecasts[id] = {
+            id: id,
             basicDescription: basicDescription,
             detailedDescription: detailedDescription
         };

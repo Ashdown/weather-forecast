@@ -1,0 +1,27 @@
+@import '_variables';
+
+.app {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 16px;
+  margin: 16px 16px 16px 16px;
+  color: $dark-grey;
+
+  .page-title {
+    font-size: 32px;
+  }
+
+  .page-title,
+  .introduction {
+    margin-top: 16px;
+  }
+
+  .link {
+    color: $dark-grey;
+    &:hover {
+      color: $black;
+    }
+  }
+
+
+}
+

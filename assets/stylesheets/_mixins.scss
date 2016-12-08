@@ -1,0 +1,6 @@
+@mixin transform($property, $time, $animation) {
+  -webkit-transition: $property $time $animation;
+  -moz-transition: $property $time $animation;
+  -o-transition: $property $time $animation;
+  transition: $property $time $animation;
+}

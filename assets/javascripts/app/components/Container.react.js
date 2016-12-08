@@ -24,10 +24,10 @@
          */
         render: function () {
             return (
-                <div>
-                    <App.Components.Generator />
+                <div className="container">
                     <App.Components.ForecastList
                         weatherForecasts={this.state.weatherForecasts} />
+                    <App.Components.Generator />
                     <App.Components.Footer />
                 </div>
                 );

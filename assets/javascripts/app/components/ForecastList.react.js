@@ -12,8 +12,7 @@
 
             return (
                 <section>
-                    <h1>Forecast will go here</h1>
-                    <ul>{forecastItems}</ul>
+                    <ul className="forecast-list">{forecastItems}</ul>
                 </section>
                 );
         }
