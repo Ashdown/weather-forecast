@@ -17,7 +17,7 @@ feature 'Capybara Test Application' do
   scenario "says introduction" do
     visit '/'
 
-    expect(page).to have_text('Display a 5 day weather forecast for the region of your choice')
+    expect(page).to have_text('Display a 5 day weather forecast')
   end
 
 end

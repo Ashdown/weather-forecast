@@ -4,9 +4,7 @@
         render: function () {
 
             return (
-                React.createElement("section", null, 
-                    React.createElement("a", {href: "#", onClick: this._onGenerateForecast}, "Generate forecast")
-                )
+                React.createElement("a", {className: "generator", href: "#", onClick: this._onGenerateForecast}, "Generate forecast")
                 );
 
         },

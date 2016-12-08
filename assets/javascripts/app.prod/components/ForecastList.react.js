@@ -12,8 +12,7 @@
 
             return (
                 React.createElement("section", null, 
-                    React.createElement("h1", null, "Forecast will go here"), 
-                    React.createElement("ul", null, forecastItems)
+                    React.createElement("ul", {className: "forecast-list"}, forecastItems)
                 )
                 );
         }

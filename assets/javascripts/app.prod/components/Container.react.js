@@ -24,10 +24,10 @@
          */
         render: function () {
             return (
-                React.createElement("div", null, 
-                    React.createElement(App.Components.Generator, null), 
+                React.createElement("div", {className: "container"}, 
                     React.createElement(App.Components.ForecastList, {
                         weatherForecasts: this.state.weatherForecasts}), 
+                    React.createElement(App.Components.Generator, null), 
                     React.createElement(App.Components.Footer, null)
                 )
                 );
